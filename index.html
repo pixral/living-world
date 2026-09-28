@@ -1,0 +1,103 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Living World</title>
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+  <header class="topbar">
+    <div class="brand">Living World</div>
+    <div class="clock"><span id="year">Year 0</span> <span id="month" class="muted">Jan</span></div>
+    <div class="group">
+      <button id="play" class="btn primary" title="Play / pause (Space)">Pause</button>
+      <div class="seg" id="speeds" aria-label="Speed"></div>
+    </div>
+    <div class="seg" id="modes" aria-label="Map view">
+      <button data-mode="political">Nations</button>
+      <button data-mode="population">Population</button>
+      <button data-mode="disease">Disease</button>
+      <button data-mode="minds">Minds</button>
+    </div>
+    <div class="group push">
+      <label class="seed">Seed <input id="seed" type="number" min="1"></label>
+      <button id="new-world" class="btn">New world</button>
+    </div>
+  </header>
+
+  <main class="layout">
+    <section class="map-wrap" id="map-wrap">
+      <canvas id="map"></canvas>
+      <div id="legend" class="legend"></div>
+      <div id="tooltip" class="tooltip" hidden></div>
+      <div id="toast" class="toast" hidden></div>
+    </section>
+
+    <aside class="sidebar">
+      <section class="panel">
+        <h2>World</h2>
+        <div class="stats">
+          <div class="stat"><div class="v" id="stat-pop">0</div><div class="k">People</div></div>
+          <div class="stat"><div class="v" id="stat-nations">0</div><div class="k">Nations</div></div>
+          <div class="stat"><div class="v" id="stat-wars">0</div><div class="k">Wars</div></div>
+          <div class="stat"><div class="v" id="stat-sick">—</div><div class="k" id="stat-sick-k">Sick</div></div>
+        </div>
+        <div class="spark-wrap">
+          <div class="spark-title">World population <span id="spark-tip" class="muted"></span></div>
+          <canvas id="spark"></canvas>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Intervene</h2>
+        <div class="tools" id="tools">
+          <button data-tool="inspect">Inspect</button>
+          <button data-tool="infect">Infection</button>
+          <button data-tool="nation">New nation</button>
+          <button data-tool="disaster">Disaster</button>
+          <button data-tool="discovery">Discovery</button>
+        </div>
+        <div class="tool-options" data-for="infect" hidden>
+          <label>Strength <select id="opt-infect"></select></label>
+        </div>
+        <div class="tool-options" data-for="nation" hidden>
+          <label>People <select id="opt-temperament"></select></label>
+          <label>Size <select id="opt-size"></select></label>
+        </div>
+        <div class="tool-options" data-for="disaster" hidden>
+          <label>Kind <select id="opt-disaster"></select></label>
+        </div>
+        <div class="tool-options" data-for="discovery" hidden>
+          <label>Gift <select id="opt-discovery"></select></label>
+        </div>
+        <p class="hint" id="tool-hint"></p>
+      </section>
+
+      <section class="panel" id="nation-panel" hidden></section>
+
+      <section class="panel">
+        <h2>Nations</h2>
+        <ol id="nation-list" class="nation-list"></ol>
+      </section>
+
+      <section class="panel">
+        <h2>Chronicle</h2>
+        <ol id="chronicle" class="chronicle"></ol>
+      </section>
+    </aside>
+  </main>
+
+  <script src="js/util.js"></script>
+  <script src="js/names.js"></script>
+  <script src="js/world.js"></script>
+  <script src="js/discoveries.js"></script>
+  <script src="js/sim.js"></script>
+  <script src="js/disease.js"></script>
+  <script src="js/god.js"></script>
+  <script src="js/mind.js"></script>
+  <script src="js/render.js"></script>
+  <script src="js/ui.js"></script>
+  <script src="js/main.js"></script>
+</body>
+</html>
